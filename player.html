@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>NBA Stars Data</title>
+          <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+          <script src="js/d3.min.js"></script>
+		<!-- <script type="text/javascript" src="https://d3js.org/d3.v7.min.js"></script> -->
+		<style type="text/css">
+            .descrp{
+                background-color: rgba(63, 63, 233,0.7);
+                display: inline-block;
+            }
+			p{
+                font-size: 40px;
+                color: rgb(238, 242, 243);
+            }	
+            .animate__animated.animate__backInRight {
+            --animate-duration: 0.5s;
+            }
+            .tooltip {
+            position: absolute;
+            text-align: center;
+            width: auto;
+            height: auto;
+            padding: 5px;
+            font: 12px sans-serif;
+            background: lightsteelblue;
+            border: 0;
+            border-radius: 8px;
+            pointer-events: none;
+        }
+            .LeBronSvg,
+            .JabbarSvg,
+            .KobeSvg,
+            .O\'NealSvg,
+            .MagicSvg,
+            .DuncanSvg,
+            .JordanSvg,
+            .CurrySvg{
+            background-color: rgba(239, 228, 215, 0.5);
+            display:inline-block;
+        }
+        select {
+            width: 300px;
+            background-color: antiquewhite;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            color: #333;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+            .JordanSvg{
+            background-color: rgba(239, 228, 215, 0.5);
+            display:inline-block;
+            }
+            .x-axis path,
+            .x-axis text,
+            .x-axis line,
+            .x-axis line.tick{
+                stroke-width: 2;
+            }
+            .y-axis path,
+            .y-axis text,
+            .y-axis line,
+            .y-axis line.tick{
+                stroke-width: 2;
+            }
+            .x-axis text,
+            .y-axis text{
+                font-weight: bold;
+            }
+		</style>
+	</head>
+
+	<body>
+        <!-- <select id="Player-Selector" onchange="manipulateChart()"></select> -->
+        <select id="Type-Selector" onchange="manipulateChart()"></select>
+    </select>
+        <script src="js/getplayername.js"></script>
+        <script src="js/addoptions.js"></script>
+        <script src="js/all.js"></script>
+		<script src="js/barchartOperations.js"></script>
+        <script src="modifypage.js"></script>
+	</body>
+</html>

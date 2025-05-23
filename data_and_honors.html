@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>球员对比</title>
+    <style>
+        body {
+            background-image: url('v2-ae69de9225185c1b7a6b166e261cc169_720w.png'); /* 添加背景图片 */
+            background-size: cover; /* 使背景图片覆盖整个页面 */
+            background-attachment: fixed; /* 固定背景图片 */
+        }
+        .axis {
+            font-size: 12px;
+        }
+        .legend {
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .area {
+            fill-opacity: 0.5;
+        }
+        .line {
+            stroke-width: 2;
+        }
+        .circle {
+            fill: white;
+            stroke-width: 2;
+        }
+        .highlight {
+        stroke-width: 3px;
+        }
+        .axis-label {
+        font-size: 12px;
+        }
+        .tooltip {
+            position: absolute;
+            text-align: center;
+            width: auto;
+            height: auto;
+            padding: 5px;
+            background: lightsteelblue;
+            border: 1px solid;
+            pointer-events: none;
+        }
+        
+    </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
+<body>
+    <header>
+        <p>Let's <em>compare</em> these great players!</p>
+        <style>
+            header {
+            background: linear-gradient(to right, #c397d2, #b0264d); /* 背景渐变 */
+            padding: 20px; /* 内边距 */
+            border-radius: 10px; /* 圆角 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影 */
+            text-align: center; /* 居中对齐 */
+            font-family: 'Roboto', sans-serif;
+        }
+
+        header p {
+            font-size: 40px; /* 字体大小 */
+            font-weight: 900; /* 字体粗细 */
+            color: white; /* 字体颜色 */
+            margin: 0; /* 去除默认外边距 */
+            font-family: 'Times New Roman', Times, serif; /* 字体家族 */
+            font-style: italic;
+            word-spacing: 15px; /* 调整此值以增加或减少单词间的间距 */
+        }
+
+        header em {
+            font-style: italic; /* 斜体 */
+            color: #ffd700; /* 金色 */
+            font-family: 'Times New Roman', Times, serif; /* 字体家族 */
+            font-size: 42px; /* 字体大小 */
+            font-weight: 900; /* 字体粗细 */
+        }
+        </style>
+    </header>
+    <div id="container">
+        <div id="chart1" class="chart">
+            <div class="header-container"><h1 id="title1">Comparison of <em>Season averages change</em></h1></div>
+            
+        </div>
+    </div>
+    <div id="container">
+        <div id="chart2" class="chart">
+            <div class="header-container"><h1 id="title2">Comparison of <em>Total career</em></h1></div>
+            
+        </div>
+        <div id="chart3" class="chart">
+            <div class="header-container"><h1 id="title3">Comparison of <em>Career averages</em></h1></div>
+            
+        </div>
+    </div>
+    <div id="container">
+        <div id="chart4" class="chart">
+            <div class="header-container">
+                <h1 id="title4">Comparison of <em>Career awards</em></h1>
+            </div>
+        </div>
+    </div>    
+    <style>
+        /* 设置容器为 Flexbox 布局 */
+        #container {
+            display: flex;
+            justify-content: space-around; /* 图表间距 */
+            padding: 25px;
+        }
+
+        /* 图表样式 */
+        #chart3,#chart2 {
+            border: 3px solid #ec6262;
+            padding: 10px;
+            background-color: rgba(247, 239, 226, 0.75);
+            width: 45%; /* 每个图表占45%的宽度 */
+            border-radius: 10px; /* 设置圆角 */
+        }
+        #chart1,#chart4 {
+            border: 3px solid #ec6262;
+            padding: 10px;
+            background-color: rgba(247, 239, 226, 0.75);
+            width: 95%; /* 每个图表占45%的宽度 */
+            border-radius: 10px; /* 设置圆角 */
+        }
+        /* 标题样式 */
+        h1 {
+            font-family: 'Arial', sans-serif; /* 字体 */
+            font-size:2em; /* 字体大小 */
+            color: #333; /* 文字颜色 */
+            text-align: center; /* 居中对齐 */
+            text-transform: uppercase; /* 大写 */
+            margin-bottom: 20px; /* 底部边距 */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* 文字阴影 */
+        }
+
+        /* 强调部分的样式 */
+        h1 em {
+            font-style: normal; /* 取消斜体 */
+            color: #e32c0b; /* 强调部分的颜色 */
+            font-weight: bold; /* 强调部分的加粗 */
+        }
+        .header-container {
+            background-color: #70bef2; /* 背景颜色 */
+            padding: 1px; /* 内边距 */
+            border-radius: 10px; /* 圆角边框 */
+        }
+    </style>
+    <script src="scriptall.js"></script>
+</body>
+</html>
