@@ -1,24 +1,53 @@
 function modifyPage() {
-    	//设置背景 + 按背景协调页面布局
-	function setBackground(url) {
-		document.body.style.backgroundImage = "url("+url+")"; // 设置背景图片
-		document.body.style.backgroundSize = "cover"; // 背景图片覆盖整个容器
-		document.body.style.backgroundRepeat = "no-repeat"; // 防止背景图片重复
-		document.body.style.backgroundAttachment = "fixed"; // 背景图片固定，不随内容滚动
-		document.body.style.backgroundPosition = "center"; // 背景图片居中
-	}
-	var picname = player + "HD.jpg";
-	var picurl = "images/" + picname;
-	if (player[0] == "O")
-	{
-		picurl = "images/Shaquille.jpg";
-	}
-    setBackground(picurl);
-    
-    svg.attr("class", player + "Svg");
-	description_parah.attr("class", 'descrp')
+    function preloadImage(url) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.src = url;
+            img.onload = () => resolve(img);
+            img.onerror = () => reject(new Error(`Failed to load image: ${url}`));
+        });
+    }
+
+    function setBackground(url) {
+        document.body.style.backgroundImage = `url(${url})`;
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundAttachment = "fixed";
+        document.body.style.backgroundPosition = "center";
+    }
+
+    const getImageUrl = () => {
+        const baseName = `${player}HD.webp`; // 默认使用WebP格式
+        return player[0] === "O" 
+            ? "images/optimized/Shaquille.webp" 
+            : `images/optimized/${baseName}`;
+    };
+
+    const loadBackground = async () => {
+        const picurl = getImageUrl();
+        
+        try {
+            document.body.style.opacity = "0.5";
+            
+            // 开始预加载
+            console.time("BackgroundPreload");
+            await preloadImage(picurl);
+            console.timeEnd("BackgroundPreload");
+            
+            // 设置背景并显示页面
+            setBackground(picurl);
+            document.body.style.opacity = "1";
+            
+        } catch (error) {
+            console.error(error);
+            // 降级方案：使用占位图或纯色背景
+            document.body.style.background = "#f0f0f0";
+            document.body.style.opacity = "1";
+        }
+    };
 	
-	// if (player == "Curry") {
-	// 	leftpadding = 120;
-	// }
+    loadBackground();
+
+    svg.attr("class", `${player}Svg`);
+    description_parah.attr("class", "descrp");
 }
